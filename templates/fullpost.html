@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+<style>
+    h1{
+        text-align: center;
+        font-style: italic;
+        font-size: 40px;
+
+    }
+    .container{
+        border: 2px solid black;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* height: auto; */
+        /* min-width: 800px; */
+        width: fit-content;
+        background-color: #e2e1e2;
+        color: white;
+    }
+    img{
+        overflow: hidden;
+        margin: auto;
+        margin-left: 100px;
+        align-items: center;
+        max-height: 500px;
+        max-width: 500px;
+    }
+    .desc{
+        font-size: 30px;
+        line-height: 42px;
+        font-family: 'opened', sans-serif ;
+    }
+    h1{
+        margin: auto;
+    }
+</style>
+{% for blog in blogpost %}
+<div class="container">
+    <div class="info">
+        
+        <h1>{{blog.title|upper}}</h1>
+        <img src="/media/{{blog.picture}}">
+        <!-- <img src="{% static 'logo.png' %}"> -->
+    </div>
+    <div class="img">
+        
+       
+        
+    </div>
+    
+        <div class="desc">
+            <p>{{blog.description}}</p>
+        </div> 
+</div>
+{% endfor %}
+{% endblock %}

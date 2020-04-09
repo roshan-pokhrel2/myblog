@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/addblog.css' %}"> {% endblock  %}
+{% block container %}
+
+<style>
+  body{
+    overflow-x: hidden;
+  }
+  a{
+    color: white;
+    font-weight: 600;
+}
+  .container{
+   
+    height: auto;
+    width: auto;
+    align-self: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border: 2px solid #95a5a6;
+    padding: 29px;
+    box-shadow: 0px 10px 1px #ddd, 0 10px 20px #ccc;
+    font-size: 20px;
+    line-height: 25px;
+    overflow: hidden;
+   
+    
+  }
+  .profile{
+    font-family: cursive;
+    border-bottom: 1px solid black;
+  }
+  strong{
+    font-size: 25px;
+  }
+  .blogpic{
+    max-width: 300px;
+    max-height: 500px;
+  }
+  .logo{
+    height: 100px;
+    width: 100px;
+    /* border: 2px solid black;
+    border-radius: 50%; */
+    filter: none;
+    justify-content: center;
+  }
+  .row{
+    margin-top: 20px;
+  }
+</style>
+{% for blog in obj %}
+<div class="container">
+  <div class="profile">
+    <!-- <img src="{{ profiles.profile.profilepic}}" class="logo"> -->
+    <img src="{% static 'images/profile.png' %}" class="logo" >
+    <!-- <strong>{{blog.user.username}}</strong> -->
+  </div>
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading">{{blog.title|upper}}</h2>
+    <p class="lead">{{blog.description|slice:":255"}}.</p>
+  </div>
+  <div class="col-md-5">
+    <img src="{{ blog.picture.url }}" class="blogpic">
+  </div>
+</div>
+<button class="btn btn-primary" type="submit">
+  <a href="{% url 'readmore' blog.pk %}" style="color: white;">
+    Readmore
+  </a>
+</button>
+
+</div>
+{% endfor %}
+
+
+
+
+
+
+<nav aria-label="...">
+  <ul class="pagination ml=20" style="display: flex; justify-content: center;">
+    {% if obj.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{obj.previous_page_number }}">Previous</a>
+    </li>{% endif %}
+    
+    <!-- <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+    <li class="page-item active">
+       -->
+      </span>
+    </li>
+    <!-- <li class="page-item"><a class="page-link" href="?page=2">2</a></li> -->
+    {% if obj.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{obj.next_page_number }}">Next</a>
+    </li>{% endif %}
+  </ul>
+</nav>
+  
+{% endblock  %}

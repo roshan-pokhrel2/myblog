@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/home.css' %}"> {% endblock  %} 
+
+{% block container %}
+<div class="section">
+
+</div>
+<h1>Our Special Partners</h1>
+<div class="parteners">
+    <div class="microsoft">
+        <img src="{% static 'images/microsoftlogo.png' %}" >
+    </div>
+    <div class="facebook">
+        <img src="{% static 'images/facebooklogo.png' %}">
+    </div>
+    <div class="amazon">
+        <img src="{% static 'images/amazonlogo.png' %}">
+    </div>
+   
+    <div class="Pin">
+        <img src="{% static 'images/googlelogo.png' %}">
+    </div>
+</div>
+{% endblock %}
